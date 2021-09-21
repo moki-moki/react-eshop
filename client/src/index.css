@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+:root {
+  --primaryColor: #1e1f24;
+  --secondaryColor: #777ee2;
+  --headings: #a8e0dd;
+  --text: #f9f8ff;
+  --links: #fff7d6;
+  --fontFamily: "Montserrat", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fontFamily);
+  background: var(--primaryColor);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--headings);
+}
+
+p {
+  color: var(--text);
+}
+
+a {
+  color: var(--links);
+  text-decoration: none;
+  transition: all 0.2s linear;
+}
+
+a:hover {
+  color: #bdaf7a;
+}
+
+.layout {
+  margin: 2em;
+  border: 3px solid #fefefe;
+  border-radius: 10px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.select {
+  color: var(--text);
+  background-color: var(--primaryColor);
+  border: none;
+  padding: 0.5em;
+}
+
+.productImg {
+  width: 350px;
+  margin-left: 1em;
+}
+
+.cartSpan {
+  margin-left: 0.3em;
+  padding: 0 0.2em 0 0.2em;
+  color: var(--text);
+  border-radius: 20%;
+  background: #474a57;
+}
+
+@media screen and (max-width: 1280px) {
+  .productImg {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 389px) {
+  .image {
+    width: 40px;
+    height: 40px;
+  }
+}
