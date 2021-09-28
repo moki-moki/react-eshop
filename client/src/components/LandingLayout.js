@@ -6,6 +6,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts as listOfProducts } from "../redux/actions/productAction";
+import LandingHeading from "./LandingHeading";
 
 const useStyles = makeStyles((theme) => ({
   skeleton: {
@@ -44,6 +45,7 @@ const LandingLayout = () => {
 
   return (
     <>
+      <LandingHeading />
       <h1 style={{ textAlign: "center" }}>Shop Items</h1>
       <div className="layout">
         <div style={{ margin: "1em" }}>
