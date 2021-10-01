@@ -18,8 +18,4 @@ My E-commerce Personal Project.
 - Add star rating
 
 # Project look
-![](images/Shop-1.png)
-![](images/Shop-2.png)
-![](images/404.png)
-![](images/Shop-2-Phone.png)
-![](images/Shop-1-Phone.png)
+
