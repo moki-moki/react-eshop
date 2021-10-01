@@ -47,7 +47,7 @@ const LandingLayout = () => {
     <>
       <LandingHeading />
       <h1 style={{ textAlign: "center" }}>Shop Items</h1>
-      <div className="layout">
+      <div id="shop" className="layout">
         <div style={{ margin: "1em" }}>
           <Grid
             container
