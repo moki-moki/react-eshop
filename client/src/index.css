@@ -44,7 +44,7 @@ a {
 }
 
 a:hover {
-  color: #bdaf7a;
+  color: #cebd82;
 }
 
 .layout {
@@ -56,13 +56,6 @@ a:hover {
 .image {
   width: 100px;
   height: 100px;
-}
-
-.select {
-  color: var(--text);
-  background-color: var(--primaryColor);
-  border: none;
-  padding: 0.5em;
 }
 
 .productImg {

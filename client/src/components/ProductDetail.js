@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../redux/actions/productAction";
 import { addToCart } from "../redux/actions/cartAction";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,19 +22,30 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   boxOne: {
-    width: "35%",
+    width: "65%",
+    display: "flex",
     [theme.breakpoints.down("md")]: {
-      margin: "1em",
-      width: "80%",
+      width: "100%",
+      flexDirection: "column",
+      alignItems: "center",
     },
   },
   paperOne: {
     padding: "1em",
     marginRight: "1em",
     marginLeft: "1em",
+    [theme.breakpoints.down("md")]: {
+      margin: "1em",
+    },
     [theme.breakpoints.down("sm")]: {
       marginRight: "0",
       marginLeft: "0",
+    },
+  },
+  desc: {
+    margin: "0.4rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "12px",
     },
   },
   boxTwo: {
@@ -40,8 +55,15 @@ const useStyles = makeStyles((theme) => ({
       width: "80%",
     },
   },
+  label: {
+    color: "#fff",
+  },
   spacing: {
-    marginBottom: "0.4em",
+    margin: "0.4rem",
+  },
+  FormControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
 }));
 
@@ -63,6 +85,10 @@ const ProductDetail = ({ match }) => {
     dispatch(addToCart(product._id, qty));
   };
 
+  const handleChange = (e) => {
+    setQty(e.target.value);
+  };
+
   const classes = useStyles();
 
   return (
@@ -73,13 +99,12 @@ const ProductDetail = ({ match }) => {
         <h2>{error}</h2>
       ) : (
         <Box className={classes.root}>
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            className="productImg"
-          />
-
           <Box className={classes.boxOne}>
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="productImg"
+            />
             <Paper className={classes.paperOne}>
               <Typography
                 className={classes.spacing}
@@ -89,10 +114,10 @@ const ProductDetail = ({ match }) => {
                 {product.name}
               </Typography>
               <Typography className={classes.spacing} component="p">
-                Price: ${product.price}
+                <span style={{ color: "#ceab21" }}>Price</span>: $
+                {product.price}
               </Typography>
-
-              <Typography className={classes.spacing} component="p">
+              <Typography className={classes.desc} component="p">
                 Description: {product.description}
               </Typography>
             </Paper>
@@ -109,24 +134,28 @@ const ProductDetail = ({ match }) => {
               <Typography component="p" className={classes.spacing}>
                 Status: {product.inStock > 0 ? "In stock" : "Out Of Stock"}{" "}
               </Typography>
-              <Typography component="p" className={classes.spacing}>
-                Qty:
-                <select
-                  className="select"
-                  value={product.qty}
-                  onChange={(e) => setQty(e.target.value)}
+              <FormControl className={classes.FormControl}>
+                <InputLabel className={classes.label} id="qty-label">
+                  Qty
+                </InputLabel>
+                <Select
+                  labelId="qty-label"
+                  id="qty-id"
+                  value={qty}
+                  onChange={handleChange}
                 >
                   {[...Array(product.inStock).keys()].map((v) => (
-                    <option key={v + 1} value={v + 1}>
+                    <MenuItem key={v + 1} value={v + 1}>
                       {v + 1}
-                    </option>
+                    </MenuItem>
                   ))}
-                </select>
-              </Typography>
+                </Select>
+              </FormControl>
               <Button
                 onClick={addToCartHandler}
                 variant="outlined"
                 color="secondary"
+                className={classes.spacing}
               >
                 Add To Cart
               </Button>

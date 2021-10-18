@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textContainer: {
     margin: "2em",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0",
+    },
   },
   text: {
     fontSize: "1.5em",

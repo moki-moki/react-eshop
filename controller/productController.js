@@ -1,6 +1,23 @@
 const Product = require("../model/Product");
 
 const loadAllProducts = async (req, res) => {
+  let query;
+
+  const reqQuery = { ...req.query };
+
+  //removing extra fields in url
+  const removeFields = ["sort"];
+  removeFields.forEach((qry) => delete reqQuery[qry]);
+
+  let queryStr = JSON.stringify(reqQuery);
+
+  queryStr = queryStr.replace(
+    /\b(gt|gte|lt|lte|in)\b/g,
+    (match) => `$${match}`
+  );
+
+  query = Product.find(JSON.parse(queryStr));
+
   try {
     const products = await Product.find({});
 

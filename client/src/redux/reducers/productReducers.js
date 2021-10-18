@@ -17,6 +17,14 @@ export const getProductsReducer = (state = { products: [] }, action) => {
         loading: false,
         error: action.payload,
       };
+    case actionTypes.GET_PRODUCTS_FAIL:
+      const sortDesc = action.payload.sort((a, b) =>
+        a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+      );
+      return {
+        ...state,
+        products: sortDesc,
+      };
     default:
       return state;
   }

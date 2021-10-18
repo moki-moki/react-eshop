@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginBottom: "5em",
     position: "sticky",
+    zIndex: "3",
   },
   menuButton: {
     marginRight: theme.spacing(2),

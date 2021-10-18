@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     width: "100vw",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -35,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   cartItems: {
     width: "60%",
     [theme.breakpoints.down("sm")]: {
-      width: "80%",
+      width: "100%",
     },
   },
 

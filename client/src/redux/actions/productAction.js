@@ -6,6 +6,7 @@ export const getProducts = () => async (dispatch) => {
 
     const req = await fetch("/api/products");
     const data = await req.json();
+
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
       payload: data,
